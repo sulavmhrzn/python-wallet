@@ -8,6 +8,9 @@ class Wallet(object):
         initial_amount (int): Sets the initial amount in the wallet
     """
 
+    AMOUNT_ADDED = 0
+    AMOUNT_SPENT = 0
+
     def __init__(self, initial_amount=0):
         if isinstance(initial_amount, int):
             if initial_amount < 0:
@@ -26,6 +29,7 @@ class Wallet(object):
             if amount < 0:
                 raise NegativeAmount()
             self.amount += amount
+            self.AMOUNT_ADDED += amount
             return self._total_amount()
         else:
             raise TypeError("Amount should be of type int")
@@ -40,6 +44,8 @@ class Wallet(object):
             if amount > self._total_amount():
                 raise InsufficientAmount()
             self.amount -= amount
+            self.AMOUNT_SPENT += amount
+
             return self._total_amount()
         else:
             raise TypeError("Amount should be of type int")
