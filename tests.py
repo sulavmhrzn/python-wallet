@@ -58,5 +58,16 @@ class TestWallet(unittest.TestCase):
         wallet.spend_amount(50)
         self.assertEqual(wallet._total_amount(), 250)
 
+    def test_wallet_amount_added_variable_shows_correct_result(self):
+        wallet = Wallet()
+        wallet.add_amount(100)
+        self.assertEqual(wallet.AMOUNT_ADDED, 100)
+
+    def test_wallet_amount_spent_variable_shows_correct_result(self):
+        wallet = Wallet()
+        wallet.add_amount(100)
+        wallet.spend_amount(50)
+        self.assertEqual(wallet.AMOUNT_SPENT, 50)
+
 
 unittest.main()
