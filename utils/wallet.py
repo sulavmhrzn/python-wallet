@@ -44,6 +44,9 @@ class Wallet(object):
         else:
             raise TypeError("Amount should be of type int")
 
+    def get_total_amount(self):
+        return self._total_amount()
+
     def _total_amount(self):
         """Returns the total amount left"""
         return self.amount
